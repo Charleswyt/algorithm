@@ -1,55 +1,55 @@
-#ifndef SEARCH_H
+ï»¿#ifndef SEARCH_H
 #define SEARCH_H
 
 #define ARRSIZE 18
 #define TRUE  1
 #define FALSE 0
 
-// ±äÁ¿¶¨Òå
+// å˜é‡å®šä¹‰
 typedef int ElementType;
 
 typedef struct MyStruct
 {
-	int iNum;				// Ë÷Òı±íÖĞµÄ¹Ø¼ü×Ö
-	int iStartIndex;		// Ë÷Òı±íÆğÊ¼Ë÷ÒıÖµ
-	int iSubTableLength;	// Ë÷Òı±í³¤¶È
+	int iNum;				// ç´¢å¼•è¡¨ä¸­çš„å…³é”®å­—
+	int iStartIndex;		// ç´¢å¼•è¡¨èµ·å§‹ç´¢å¼•å€¼
+	int iSubTableLength;	// ç´¢å¼•è¡¨é•¿åº¦
 }SubTable;
 
 /************************************************************************/
-/*                              ²éÕÒº¯Êı                                */
+/*                              æŸ¥æ‰¾å‡½æ•°                                */
 /************************************************************************/
 
-/*²éÕÒËã·¨·ÖÀà£º
- * 1£©¾²Ì¬²éÕÒºÍ¶¯Ì¬²éÕÒ£»
- * ×¢£º¾²Ì¬»òÕß¶¯Ì¬¶¼ÊÇÕë¶Ô²éÕÒ±í¶øÑÔµÄ¡£¶¯Ì¬±íÖ¸²éÕÒ±íÖĞÓĞÉ¾³ıºÍ²åÈë²Ù×÷µÄ±í¡£
+/*æŸ¥æ‰¾ç®—æ³•åˆ†ç±»ï¼š
+ * 1ï¼‰é™æ€æŸ¥æ‰¾å’ŒåŠ¨æ€æŸ¥æ‰¾ï¼›
+ * æ³¨ï¼šé™æ€æˆ–è€…åŠ¨æ€éƒ½æ˜¯é’ˆå¯¹æŸ¥æ‰¾è¡¨è€Œè¨€çš„ã€‚åŠ¨æ€è¡¨æŒ‡æŸ¥æ‰¾è¡¨ä¸­æœ‰åˆ é™¤å’Œæ’å…¥æ“ä½œçš„è¡¨ã€‚
 
- * 2£©ÎŞĞò²éÕÒºÍÓĞĞò²éÕÒ
- * ÎŞĞò²éÕÒ£º±»²éÕÒÊıÁĞÓĞĞòÎŞĞò¾ù¿É
- * ÓĞĞò²éÕÒ£º±»²éÕÒÊıÁĞ±ØĞëÎªÓĞĞòÊıÁĞ
+ * 2ï¼‰æ— åºæŸ¥æ‰¾å’Œæœ‰åºæŸ¥æ‰¾
+ * æ— åºæŸ¥æ‰¾ï¼šè¢«æŸ¥æ‰¾æ•°åˆ—æœ‰åºæ— åºå‡å¯
+ * æœ‰åºæŸ¥æ‰¾ï¼šè¢«æŸ¥æ‰¾æ•°åˆ—å¿…é¡»ä¸ºæœ‰åºæ•°åˆ—
 */
 
-// º¯ÊıÉùÃ÷
-int search_sequence(ElementType* arrData, int iArrLength, ElementType Num);		// Ë³Ğò²éÕÒ
-int search_binary(ElementType* arrData, int iArrLength, ElementType Num);		// ¶ş·Ö²éÕÒ
-int search_insert(ElementType* arrData, int iArrLength, ElementType Num);		// ²åÖµ²éÕÒ
-int search_fibonacci(ElementType* arrData, int iArrLength, ElementType Num);	// ì³²¨ÄÇÆõ²éÕÒ
-int search_block(ElementType* arrData, int iArrLength, ElementType Num);		// ·Ö¿é²éÕÒ
+// å‡½æ•°å£°æ˜
+int search_sequence(ElementType* arrData, int iArrLength, ElementType Num);		// é¡ºåºæŸ¥æ‰¾
+int search_binary(ElementType* arrData, int iArrLength, ElementType Num);		// äºŒåˆ†æŸ¥æ‰¾
+int search_insert(ElementType* arrData, int iArrLength, ElementType Num);		// æ’å€¼æŸ¥æ‰¾
+int search_fibonacci(ElementType* arrData, int iArrLength, ElementType Num);	// æ–æ³¢é‚£å¥‘æŸ¥æ‰¾
+int search_block(ElementType* arrData, int iArrLength, ElementType Num);		// åˆ†å—æŸ¥æ‰¾
 
-int  get_fibonacci_length(int iArrLength);										// È·¶¨ì³²¨ÄÉêüÊıÁĞµÄ³¤¶È
+int  get_fibonacci_length(int iArrLength);										// ç¡®å®šæ–æ³¢çº³æŒˆæ•°åˆ—çš„é•¿åº¦
 
 int  create_subtable(ElementType* arrData, int iArrLength,
-	SubTable* pTable, int iTableNum);											// ´´½¨Ë÷Òı±í
-void show_table_info(SubTable * pTable, int iTableNum);							// ÏÔÊ¾Ë÷Òı±íĞÅÏ¢
+	SubTable* pTable, int iTableNum);											// åˆ›å»ºç´¢å¼•è¡¨
+void show_table_info(SubTable * pTable, int iTableNum);							// æ˜¾ç¤ºç´¢å¼•è¡¨ä¿¡æ¯
 
-void search_test(void);															// ²âÊÔº¯Êı
+void search_test(void);															// æµ‹è¯•å‡½æ•°
 
-// º¯Êı¶¨Òå
+// å‡½æ•°å®šä¹‰
 int search_sequence(ElementType* arrData, int iArrLength, ElementType Num) {
 	
-	// Ë³Ğò²éÕÒÊÊºÏÓÚ´æ´¢½á¹¹ÎªË³Ğò´æ´¢»òÁ´½Ó´æ´¢µÄÏßĞÔ±í
-	// »ù±¾Ë¼Ïë£ºË³Ğò²éÕÒÒ²³ÆÎªÏßĞÎ²éÕÒ£¬ÊôÓÚÎŞĞò²éÕÒËã·¨¡£
-	// ´ÓÊı¾İ½á¹¹ÏßĞÎ±íµÄÒ»¶Ë¿ªÊ¼£¬Ë³ĞòÉ¨Ãè£¬ÒÀ´Î½«É¨Ãèµ½µÄ½áµã¹Ø¼ü×ÖÓë¸ø¶¨ÖµkÏà±È½Ï£¬
-	// ÈôÏàµÈÔò±íÊ¾²éÕÒ³É¹¦£»ÈôÉ¨Ãè½áÊøÈÔÃ»ÓĞÕÒµ½¹Ø¼ü×ÖµÈÓÚkµÄ½áµã£¬±íÊ¾²éÕÒÊ§°Ü¡£
+	// é¡ºåºæŸ¥æ‰¾é€‚åˆäºå­˜å‚¨ç»“æ„ä¸ºé¡ºåºå­˜å‚¨æˆ–é“¾æ¥å­˜å‚¨çš„çº¿æ€§è¡¨
+	// åŸºæœ¬æ€æƒ³ï¼šé¡ºåºæŸ¥æ‰¾ä¹Ÿç§°ä¸ºçº¿å½¢æŸ¥æ‰¾ï¼Œå±äºæ— åºæŸ¥æ‰¾ç®—æ³•ã€‚
+	// ä»æ•°æ®ç»“æ„çº¿å½¢è¡¨çš„ä¸€ç«¯å¼€å§‹ï¼Œé¡ºåºæ‰«æï¼Œä¾æ¬¡å°†æ‰«æåˆ°çš„ç»“ç‚¹å…³é”®å­—ä¸ç»™å®šå€¼kç›¸æ¯”è¾ƒï¼Œ
+	// è‹¥ç›¸ç­‰åˆ™è¡¨ç¤ºæŸ¥æ‰¾æˆåŠŸï¼›è‹¥æ‰«æç»“æŸä»æ²¡æœ‰æ‰¾åˆ°å…³é”®å­—ç­‰äºkçš„ç»“ç‚¹ï¼Œè¡¨ç¤ºæŸ¥æ‰¾å¤±è´¥ã€‚
 
 	int i;
 	int iLocate = -1;
@@ -63,9 +63,9 @@ int search_sequence(ElementType* arrData, int iArrLength, ElementType Num) {
 }
 
 int search_binary(ElementType* arrData, int iArrLength, ElementType Num) {
-	// ĞèÒª²éÕÒ¶ÔÏóÊÇÓĞĞòµÄ£¬Ã¿Ò»´Î¶¼ÕÒ1/2µÄ²¿·Ö£¬²éÕÒ´ÎÊı´ó´óµÄ¼õÉÙÁË¡£Ê±¼ä¸´ÔÓ¶ÈÊÇO(logN)
-	// ¶ÔÓÚ¾²Ì¬²éÕÒ±í£¬Ò»´ÎÅÅĞòºó²»ÔÙ±ä»¯£¬ÕÛ°ë²éÕÒÄÜµÃµ½²»´íµÄĞ§ÂÊ¡£
-	// µ«¶ÔÓÚĞèÒªÆµ·±Ö´ĞĞ²åÈë»òÉ¾³ı²Ù×÷µÄÊı¾İ¼¯À´Ëµ£¬Î¬»¤ÓĞĞòµÄÅÅĞò»á´øÀ´²»Ğ¡µÄ¹¤×÷Á¿£¬ÄÇ¾Í²»½¨ÒéÊ¹ÓÃ
+	// éœ€è¦æŸ¥æ‰¾å¯¹è±¡æ˜¯æœ‰åºçš„ï¼Œæ¯ä¸€æ¬¡éƒ½æ‰¾1/2çš„éƒ¨åˆ†ï¼ŒæŸ¥æ‰¾æ¬¡æ•°å¤§å¤§çš„å‡å°‘äº†ã€‚æ—¶é—´å¤æ‚åº¦æ˜¯O(logN)
+	// å¯¹äºé™æ€æŸ¥æ‰¾è¡¨ï¼Œä¸€æ¬¡æ’åºåä¸å†å˜åŒ–ï¼ŒæŠ˜åŠæŸ¥æ‰¾èƒ½å¾—åˆ°ä¸é”™çš„æ•ˆç‡ã€‚
+	// ä½†å¯¹äºéœ€è¦é¢‘ç¹æ‰§è¡Œæ’å…¥æˆ–åˆ é™¤æ“ä½œçš„æ•°æ®é›†æ¥è¯´ï¼Œç»´æŠ¤æœ‰åºçš„æ’åºä¼šå¸¦æ¥ä¸å°çš„å·¥ä½œé‡ï¼Œé‚£å°±ä¸å»ºè®®ä½¿ç”¨
 	
 	int iLeft, iRight, iMid;
 	int iLocate = -1;
@@ -93,9 +93,9 @@ int search_binary(ElementType* arrData, int iArrLength, ElementType Num) {
 
 int search_insert(ElementType* arrData, int iArrLength, ElementType Num) {
 	
-	// »ù±¾Ë¼Ïë£º»ùÓÚ¶ş·Ö²éÕÒËã·¨£¬½«²éÕÒµãµÄÑ¡Ôñ¸Ä½øÎª×ÔÊÊÓ¦Ñ¡Ôñ£¬¿ÉÒÔÌá¸ß²éÕÒĞ§ÂÊ¡£µ±È»£¬²îÖµ²éÕÒÒ²ÊôÓÚÓĞĞò²éÕÒ¡£
-	// ¶ÔÓÚ±í³¤½Ï´ó£¬¶ø¹Ø¼ü×Ö·Ö²¼ÓÖ±È½Ï¾ùÔÈµÄ²éÕÒ±íÀ´Ëµ£¬²åÖµ²éÕÒËã·¨µÄÆ½¾ùĞÔÄÜ±ÈÕÛ°ë²éÕÒÒªºÃµÄ¶à¡£
-	// ·´Ö®£¬Êı×éÖĞÈç¹û·Ö²¼·Ç³£²»¾ùÔÈ£¬ÄÇÃ´²åÖµ²éÕÒÎ´±ØÊÇºÜºÏÊÊµÄÑ¡Ôñ¡£
+	// åŸºæœ¬æ€æƒ³ï¼šåŸºäºäºŒåˆ†æŸ¥æ‰¾ç®—æ³•ï¼Œå°†æŸ¥æ‰¾ç‚¹çš„é€‰æ‹©æ”¹è¿›ä¸ºè‡ªé€‚åº”é€‰æ‹©ï¼Œå¯ä»¥æé«˜æŸ¥æ‰¾æ•ˆç‡ã€‚å½“ç„¶ï¼Œå·®å€¼æŸ¥æ‰¾ä¹Ÿå±äºæœ‰åºæŸ¥æ‰¾ã€‚
+	// å¯¹äºè¡¨é•¿è¾ƒå¤§ï¼Œè€Œå…³é”®å­—åˆ†å¸ƒåˆæ¯”è¾ƒå‡åŒ€çš„æŸ¥æ‰¾è¡¨æ¥è¯´ï¼Œæ’å€¼æŸ¥æ‰¾ç®—æ³•çš„å¹³å‡æ€§èƒ½æ¯”æŠ˜åŠæŸ¥æ‰¾è¦å¥½çš„å¤šã€‚
+	// åä¹‹ï¼Œæ•°ç»„ä¸­å¦‚æœåˆ†å¸ƒéå¸¸ä¸å‡åŒ€ï¼Œé‚£ä¹ˆæ’å€¼æŸ¥æ‰¾æœªå¿…æ˜¯å¾ˆåˆé€‚çš„é€‰æ‹©ã€‚
 	
 	int iLeft, iRight, iMid;
 	int iLocate = -1;
@@ -123,38 +123,38 @@ int search_insert(ElementType* arrData, int iArrLength, ElementType Num) {
 
 int search_fibonacci(ElementType* arrData, int iArrLength, ElementType Num) {
 	
-	// Ò²ÊÇ¶ş·Ö²éÕÒµÄÒ»ÖÖÌáÉıËã·¨£¬Í¨¹ıÔËÓÃ»Æ½ğ±ÈÀıµÄ¸ÅÄîÔÚÊıÁĞÖĞÑ¡Ôñ²éÕÒµã½øĞĞ²éÕÒ£¬Ìá¸ß²éÕÒĞ§ÂÊ¡£
-	// Í¬ÑùµØ£¬ì³²¨ÄÇÆõ²éÕÒÒ²ÊôÓÚÒ»ÖÖÓĞĞò²éÕÒËã·¨¡£
-	// ì³²¨ÄÇÆõ²éÕÒÓëÕÛ°ë²éÕÒºÜÏàËÆ£¬ËûÊÇ¸ù¾İì³²¨ÄÇÆõĞòÁĞµÄÌØµã¶ÔÓĞĞò±í½øĞĞ·Ö¸îµÄ¡£
+	// ä¹Ÿæ˜¯äºŒåˆ†æŸ¥æ‰¾çš„ä¸€ç§æå‡ç®—æ³•ï¼Œé€šè¿‡è¿ç”¨é»„é‡‘æ¯”ä¾‹çš„æ¦‚å¿µåœ¨æ•°åˆ—ä¸­é€‰æ‹©æŸ¥æ‰¾ç‚¹è¿›è¡ŒæŸ¥æ‰¾ï¼Œæé«˜æŸ¥æ‰¾æ•ˆç‡ã€‚
+	// åŒæ ·åœ°ï¼Œæ–æ³¢é‚£å¥‘æŸ¥æ‰¾ä¹Ÿå±äºä¸€ç§æœ‰åºæŸ¥æ‰¾ç®—æ³•ã€‚
+	// æ–æ³¢é‚£å¥‘æŸ¥æ‰¾ä¸æŠ˜åŠæŸ¥æ‰¾å¾ˆç›¸ä¼¼ï¼Œä»–æ˜¯æ ¹æ®æ–æ³¢é‚£å¥‘åºåˆ—çš„ç‰¹ç‚¹å¯¹æœ‰åºè¡¨è¿›è¡Œåˆ†å‰²çš„ã€‚
 	
-	// ÒªÇó¿ªÊ¼±íÖĞ¼ÇÂ¼µÄ¸öÊıÎªÄ³¸öì³²¨ÄÇÆõÊıĞ¡1£¬¼´iArrLength = Fibonacci(k) - 1;
-	// ¿ªÊ¼½«kÖµÓëµÚF(k - 1)Î»ÖÃµÄ¼ÇÂ¼½øĞĞ±È½Ï(¼´mid = low + Fibonacci(k - 1) - 1), ±È½Ï½á¹ûÒ²·ÖÎªÈıÖÖ
-	// £¨1£©ÏàµÈ£¬midÎ»ÖÃµÄÔªËØ¼´ÎªËùÇó
-	// £¨2£©´óÓÚ£¬low = mid + 1, k -= 2;
-	// ËµÃ÷£ºlow = mid + 1ËµÃ÷´ı²éÕÒµÄÔªËØÔÚ[mid + 1, high]·¶Î§ÄÚ£¬
-	// k -= 2 ËµÃ÷·¶Î§[mid + 1, high]ÄÚµÄÔªËØ¸öÊıÎªn - (F(k - 1)) = Fk - 1 - F(k - 1) = Fk - F(k - 1) - 1 = F(k - 2) - 1¸ö£¬ËùÒÔ¿ÉÒÔµİ¹éµÄÓ¦ÓÃì³²¨ÄÇÆõ²éÕÒ¡£
-	// £¨3£©Ğ¡ÓÚ£¬high = mid - 1, k -= 1¡£
-	// ËµÃ÷£ºlow = mid + 1ËµÃ÷´ı²éÕÒµÄÔªËØÔÚ[low, mid - 1]·¶Î§ÄÚ£¬
-	// k -= 1 ËµÃ÷·¶Î§[low, mid - 1]ÄÚµÄÔªËØ¸öÊıÎªF(k - 1) - 1¸ö£¬ËùÒÔ¿ÉÒÔµİ¹éµÄÓ¦ÓÃì³²¨ÄÇÆõ²éÕÒ¡£
+	// è¦æ±‚å¼€å§‹è¡¨ä¸­è®°å½•çš„ä¸ªæ•°ä¸ºæŸä¸ªæ–æ³¢é‚£å¥‘æ•°å°1ï¼Œå³iArrLength = Fibonacci(k) - 1;
+	// å¼€å§‹å°†kå€¼ä¸ç¬¬F(k - 1)ä½ç½®çš„è®°å½•è¿›è¡Œæ¯”è¾ƒ(å³mid = low + Fibonacci(k - 1) - 1), æ¯”è¾ƒç»“æœä¹Ÿåˆ†ä¸ºä¸‰ç§
+	// ï¼ˆ1ï¼‰ç›¸ç­‰ï¼Œmidä½ç½®çš„å…ƒç´ å³ä¸ºæ‰€æ±‚
+	// ï¼ˆ2ï¼‰å¤§äºï¼Œlow = mid + 1, k -= 2;
+	// è¯´æ˜ï¼šlow = mid + 1è¯´æ˜å¾…æŸ¥æ‰¾çš„å…ƒç´ åœ¨[mid + 1, high]èŒƒå›´å†…ï¼Œ
+	// k -= 2 è¯´æ˜èŒƒå›´[mid + 1, high]å†…çš„å…ƒç´ ä¸ªæ•°ä¸ºn - (F(k - 1)) = Fk - 1 - F(k - 1) = Fk - F(k - 1) - 1 = F(k - 2) - 1ä¸ªï¼Œæ‰€ä»¥å¯ä»¥é€’å½’çš„åº”ç”¨æ–æ³¢é‚£å¥‘æŸ¥æ‰¾ã€‚
+	// ï¼ˆ3ï¼‰å°äºï¼Œhigh = mid - 1, k -= 1ã€‚
+	// è¯´æ˜ï¼šlow = mid + 1è¯´æ˜å¾…æŸ¥æ‰¾çš„å…ƒç´ åœ¨[low, mid - 1]èŒƒå›´å†…ï¼Œ
+	// k -= 1 è¯´æ˜èŒƒå›´[low, mid - 1]å†…çš„å…ƒç´ ä¸ªæ•°ä¸ºF(k - 1) - 1ä¸ªï¼Œæ‰€ä»¥å¯ä»¥é€’å½’çš„åº”ç”¨æ–æ³¢é‚£å¥‘æŸ¥æ‰¾ã€‚
 	
-	int  iLeft, iMid, iRight;					// ĞòÁĞ×óÖµ¡¢ÖĞÖµ¡¢ÓÒÖµ
-	int  iLocate = -1;							// ´ı²éÕÒÔªËØË÷Òı
-	int  i,j;									// Ñ­»·ÏÂ±ê
-	int* arrFibonacci;							// Éú³ÉµÄì³²¨ÄÇÆõÊıÁĞ
-	ElementType* arrTempNum;					// Ìî³äºóµÄÁÙÊ±ĞòÁĞ
-	int iFibonacciArrLength, iTempArrLength;	// ·Æ±¡ÄÇÇĞÊıÁĞ³¤¶È¡¢ÁÙÊ±ĞòÁĞ³¤¶È
+	int  iLeft, iMid, iRight;					// åºåˆ—å·¦å€¼ã€ä¸­å€¼ã€å³å€¼
+	int  iLocate = -1;							// å¾…æŸ¥æ‰¾å…ƒç´ ç´¢å¼•
+	int  i,j;									// å¾ªç¯ä¸‹æ ‡
+	int* arrFibonacci;							// ç”Ÿæˆçš„æ–æ³¢é‚£å¥‘æ•°åˆ—
+	ElementType* arrTempNum;					// å¡«å……åçš„ä¸´æ—¶åºåˆ—
+	int iFibonacciArrLength, iTempArrLength;	// è²è–„é‚£åˆ‡æ•°åˆ—é•¿åº¦ã€ä¸´æ—¶åºåˆ—é•¿åº¦
 	
 	iLeft = 0; iRight = iArrLength - 1;
 	
 	if (Num > arrData[iRight] || Num < arrData[iLeft])
 		return iLocate;
 
-	iFibonacciArrLength = get_fibonacci_length(iArrLength);			// »ñÈ¡¶ÔÓ¦µÄì³²¨ÄÇÆõÊıÁĞ³¤¶È
-	arrFibonacci = (int*)malloc(sizeof(int) * iFibonacciArrLength);	// ÉêÇë¿Õ¼ä
-	genFibonacci(arrFibonacci, iFibonacciArrLength);				// ¹¹Ôìì³²¨ÄÇÆõÊıÁĞ
-	iTempArrLength = arrFibonacci[iFibonacciArrLength - 1] - 1;		// ÁÙÊ±ÊıÁĞµÄ³¤¶ÈÎªµ±Ç°ì³²¨ÄÉêüÊıÁĞµÄ×îºóÒ»¸öÊı - 1
+	iFibonacciArrLength = get_fibonacci_length(iArrLength);			// è·å–å¯¹åº”çš„æ–æ³¢é‚£å¥‘æ•°åˆ—é•¿åº¦
+	arrFibonacci = (int*)malloc(sizeof(int) * iFibonacciArrLength);	// ç”³è¯·ç©ºé—´
+	genFibonacci(arrFibonacci, iFibonacciArrLength);				// æ„é€ æ–æ³¢é‚£å¥‘æ•°åˆ—
+	iTempArrLength = arrFibonacci[iFibonacciArrLength - 1] - 1;		// ä¸´æ—¶æ•°åˆ—çš„é•¿åº¦ä¸ºå½“å‰æ–æ³¢çº³æŒˆæ•°åˆ—çš„æœ€åä¸€ä¸ªæ•° - 1
 
-	// ¹¹ÔìÁÙÊ±ĞòÁĞ
+	// æ„é€ ä¸´æ—¶åºåˆ—
 	arrTempNum = (int*)malloc(sizeof(int)* iTempArrLength);
 	for (i = 0; i < iArrLength; i++) {
 		arrTempNum[i] = arrData[i];
@@ -195,15 +195,15 @@ int search_fibonacci(ElementType* arrData, int iArrLength, ElementType Num) {
 
 int search_block(ElementType* arrData, int iArrLength, ElementType iNum) {
 	
-	// ·Ö¿é²éÕÒ£¬ÔÚÃ¿Ò»¿éÖĞ¼ÇÂ¼µÄ¹Ø¼ü×Ö²»Ò»¶¨ÓĞĞò£¬µ«ÊÇ¿éÓë¿éÖ®¼ä±ØĞëÓĞĞò¡£
-	// ¼ÙÉèÕâÖÖÅÅĞòÊÇ°´¹Ø¼ü×ÖÖµµİÔöÅÅĞòµÄ£¬³éÈ¡¸÷¿éÖĞµÄ×î´ó¹Ø¼ü×Ö¼°¸Ã¿éµÄÆğÊ¼Î»ÖÃ¹¹³ÉË÷Òı±í£¬
-	// °´¿éµÄË³Ğò´æ·ÅÔÚÒ»¸öÊı×éÖĞ£¬ÏÔÈ»Õâ¸öÊı×éÊÇÓĞĞòµÄ£¬Ò»°ã°´ÉıĞòÅÅÁĞ
-	// ´Ó±¾ÖÊÉÏËµ£¬·Ö¿é²éÕÒ¶Ô´æ´¢ĞòÁĞÊÇÓĞÒªÇóµÄ
+	// åˆ†å—æŸ¥æ‰¾ï¼Œåœ¨æ¯ä¸€å—ä¸­è®°å½•çš„å…³é”®å­—ä¸ä¸€å®šæœ‰åºï¼Œä½†æ˜¯å—ä¸å—ä¹‹é—´å¿…é¡»æœ‰åºã€‚
+	// å‡è®¾è¿™ç§æ’åºæ˜¯æŒ‰å…³é”®å­—å€¼é€’å¢æ’åºçš„ï¼ŒæŠ½å–å„å—ä¸­çš„æœ€å¤§å…³é”®å­—åŠè¯¥å—çš„èµ·å§‹ä½ç½®æ„æˆç´¢å¼•è¡¨ï¼Œ
+	// æŒ‰å—çš„é¡ºåºå­˜æ”¾åœ¨ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œæ˜¾ç„¶è¿™ä¸ªæ•°ç»„æ˜¯æœ‰åºçš„ï¼Œä¸€èˆ¬æŒ‰å‡åºæ’åˆ—
+	// ä»æœ¬è´¨ä¸Šè¯´ï¼Œåˆ†å—æŸ¥æ‰¾å¯¹å­˜å‚¨åºåˆ—æ˜¯æœ‰è¦æ±‚çš„
 
-	int iFlag;							// Ë÷Òı±í´´½¨±êÊ¶
-	int iTableNum;						// Ë÷Òı±í¸öÊı
-	int iLocate = -1;					// ´ı²éÕÒÔªËØË÷Òı
-	SubTable* pTable;					// Ë÷Òı±í
+	int iFlag;							// ç´¢å¼•è¡¨åˆ›å»ºæ ‡è¯†
+	int iTableNum;						// ç´¢å¼•è¡¨ä¸ªæ•°
+	int iLocate = -1;					// å¾…æŸ¥æ‰¾å…ƒç´ ç´¢å¼•
+	SubTable* pTable;					// ç´¢å¼•è¡¨
 	int iLeft, iRight, iMid;	//
 //	int iSubLeft, iSubRight, iSubMid;	// 
 
@@ -212,7 +212,7 @@ int search_block(ElementType* arrData, int iArrLength, ElementType iNum) {
 	iFlag = create_subtable(arrData, iArrLength, pTable, iTableNum);
 
 	if (iFlag == -1) {
-		printf("Ë÷Òı±í´´½¨Ê§°Ü");
+		printf("ç´¢å¼•è¡¨åˆ›å»ºå¤±è´¥");
 		return iLocate;
 	}
 	else {
@@ -254,14 +254,14 @@ int get_fibonacci_length(int iArrLength) {
 
 int create_subtable(ElementType * arrData, int iArrLength, SubTable * pTable, int iTableNum) {
 	
-	int* arrSubTable;			// ×Ó±í
-	int  iSubTableLength;		// ×Ó±í³¤¶È
-	MostValue tMax;				// ×Ó±íÖĞµÄ×î´óÔªËØ¼°ÆäË÷ÒıÖµ
-	int  i;						// Ñ­»·ÏÂ±ê
+	int* arrSubTable;			// å­è¡¨
+	int  iSubTableLength;		// å­è¡¨é•¿åº¦
+	MostValue tMax;				// å­è¡¨ä¸­çš„æœ€å¤§å…ƒç´ åŠå…¶ç´¢å¼•å€¼
+	int  i;						// å¾ªç¯ä¸‹æ ‡
 
-	// ²ÉÓÃ¹Ì¶¨·Ö×éÄ£Ê½
+	// é‡‡ç”¨å›ºå®šåˆ†ç»„æ¨¡å¼
 	if (iArrLength % iTableNum != 0 || iTableNum > iArrLength) {
-		return FALSE;			// Ë÷Òı±í´´½¨Ê§°Ü
+		return FALSE;			// ç´¢å¼•è¡¨åˆ›å»ºå¤±è´¥
 	}
 
 	iSubTableLength = iArrLength / iTableNum;
@@ -291,23 +291,23 @@ void search_test(void) {
 	//iLocate = search_insert(arrData, ARRSIZE, iNum);
 	iLocate = search_binary(arrData, ARRSIZE, Num);
 
-	printf("ĞòÁĞarrDataÖĞµÄÔªËØ·Ö±ğÎª£º");
+	printf("åºåˆ—arrDataä¸­çš„å…ƒç´ åˆ†åˆ«ä¸ºï¼š");
 	for (i = 0; i < ARRSIZE; i++) {
 		printf("%d ", arrData[i]);
 	}
 	printf("\n");
 
 	if (iLocate != -1) {
-		printf("ĞòÁĞarrDataÖĞ´æÔÚÔªËØ%d£¬ÏÂ±êÎª£º%d\n", Num, iLocate);
+		printf("åºåˆ—arrDataä¸­å­˜åœ¨å…ƒç´ %dï¼Œä¸‹æ ‡ä¸ºï¼š%d\n", Num, iLocate);
 	}
 	else{
-		printf("ĞòÁĞarrDataÖĞ²»´æÔÚÔªËØ%d\n", Num);
+		printf("åºåˆ—arrDataä¸­ä¸å­˜åœ¨å…ƒç´ %d\n", Num);
 	}
 }
 
 void show_table_info(SubTable * pTable, int iTableNum) {
 	int i;
-	printf("µ±Ç°ĞòÁĞ´´½¨µÄË÷Òı±íÎª£º\n");
+	printf("å½“å‰åºåˆ—åˆ›å»ºçš„ç´¢å¼•è¡¨ä¸ºï¼š\n");
 	for (i = 0; i < iTableNum; i++) {
 		printf("{ %d %d %d }\n", pTable[i].iNum, pTable[i].iStartIndex, pTable[i].iSubTableLength);
 	}

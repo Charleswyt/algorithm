@@ -1,32 +1,32 @@
-#ifndef SEQUENCE_H
+ï»¿#ifndef SEQUENCE_H
 #define SEQUENCE_H
 
 #include <time.h>
 #include <stdlib.h>
 
-// ±äÁ¿¶¨Òå
+// å˜é‡å®šä¹‰
 typedef int ElementType;
 
-// º¯ÊıÉùÃ÷
-void genConst(int* arrNumber, int iArrLength, int iNumber);						// ³£ÊıÁĞÉú³ÉÆ÷
-void genNaturalNumber(int* arrNumbr, int iArrLength);							// ×ÔÈ»ÊıÊıÁĞÉú³ÉÆ÷
+// å‡½æ•°å£°æ˜
+void genConst(int* arrNumber, int iArrLength, int iNumber);						// å¸¸æ•°åˆ—ç”Ÿæˆå™¨
+void genNaturalNumber(int* arrNumbr, int iArrLength);							// è‡ªç„¶æ•°æ•°åˆ—ç”Ÿæˆå™¨
 void genArithmeticSequence(int* arrNumber, int iArrLength,
-	int iFirstItem, int iDistance);												// µÈ²îÊıÁĞÉú³ÉÆ÷
+	int iFirstItem, int iDistance);												// ç­‰å·®æ•°åˆ—ç”Ÿæˆå™¨
 void genGeometricSequence(int* arrNumber, int iArrLength,
-	int iFirstItem, int iRatio);												// µÈ±ÈÊıÁĞÉú³ÉÆ÷
-void genFibonacci(int* arrFibonacci, int iArrLength);							// ì³²¨ÄÇÆõÊıÁĞÉú³ÉÆ÷
-void genCatalan(int* arrNumber, int iArrLength);								// ¿¨ÌØÀ¼ÊıÁĞÉú³ÉÆ÷
-void genPrimeNumbe(int* arrNumber, int iArrLength);								// ÖÊÊıÊıÁĞÉú³ÉÆ÷
-void genRand(int* arrNumber, int iMin, int iMax, int iArrLength);				// Ëæ»úÊıÁĞÉú³ÉÆ÷
+	int iFirstItem, int iRatio);												// ç­‰æ¯”æ•°åˆ—ç”Ÿæˆå™¨
+void genFibonacci(int* arrFibonacci, int iArrLength);							// æ–æ³¢é‚£å¥‘æ•°åˆ—ç”Ÿæˆå™¨
+void genCatalan(int* arrNumber, int iArrLength);								// å¡ç‰¹å…°æ•°åˆ—ç”Ÿæˆå™¨
+void genPrimeNumbe(int* arrNumber, int iArrLength);								// è´¨æ•°æ•°åˆ—ç”Ÿæˆå™¨
+void genRand(int* arrNumber, int iMin, int iMax, int iArrLength);				// éšæœºæ•°åˆ—ç”Ÿæˆå™¨
 
-void inverse_list(ElementType* arrData, int iArrLength);						// ĞòÁĞÔªËØÄæĞò
-void show_list(ElementType* arrData, int iArrLength);							// ÏÔÊ¾ĞòÁĞÖĞµÄÔªËØ
-void arr_copy(ElementType* arrSrc, ElementType* arrDest, int iDestLength);		// Êı×éÔªËØ¿½±´
-ElementType get_number(ElementType* arrData, int iArrLength, int iPos);			// »ñÈ¡ÁĞ±íÖĞÖ¸¶¨ÏÂ±êµÄÔªËØ
+void inverse_list(ElementType* arrData, int iArrLength);						// åºåˆ—å…ƒç´ é€†åº
+void show_list(ElementType* arrData, int iArrLength);							// æ˜¾ç¤ºåºåˆ—ä¸­çš„å…ƒç´ 
+void arr_copy(ElementType* arrSrc, ElementType* arrDest, int iDestLength);		// æ•°ç»„å…ƒç´ æ‹·è´
+ElementType get_number(ElementType* arrData, int iArrLength, int iPos);			// è·å–åˆ—è¡¨ä¸­æŒ‡å®šä¸‹æ ‡çš„å…ƒç´ 
 
-void sequence_test(void);														// ²âÊÔº¯Êı
+void sequence_test(void);														// æµ‹è¯•å‡½æ•°
 
-// º¯Êı¶¨Òå
+// å‡½æ•°å®šä¹‰
 void genConst(int* arrNumber, int iArrLength, int iNumber) {
 	int i;
 	for (i = 0; i < iArrLength; i++) {
@@ -60,7 +60,7 @@ void genGeometricSequence(int* arrNumber, int iArrLength,
 
 void genRand(int* arrNumber, int iMin, int iMax, int iArrLength) {
 	int i;
-	srand((unsigned)time(NULL));						// ÓÃÊ±¼ä×öÖÖ£¬Ã¿´Î²úÉúËæ»úÊı²»Ò»Ñù
+	srand((unsigned)time(NULL));						// ç”¨æ—¶é—´åšç§ï¼Œæ¯æ¬¡äº§ç”Ÿéšæœºæ•°ä¸ä¸€æ ·
 	for (i = 0; i < iArrLength; i++) {
 		arrNumber[i] = rand() % (iMax + 1) + iMin;
 	}

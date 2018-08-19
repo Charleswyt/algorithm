@@ -1,14 +1,14 @@
-#ifndef HASH_H
+ï»¿#ifndef HASH_H
 #define HASH_H
 
-void create_hash_table(int * arrHash);							// ´´½¨Hash±í
-int search_hash(int * arrData, int iArrLength, int iNum);		// ¹şÏ£²éÕÒ
-int  hash_function(int iNum, int iHashLength, int iHashType);	// É¢ÁĞº¯Êı
+void create_hash_table(int * arrHash);							// åˆ›å»ºHashè¡¨
+int search_hash(int * arrData, int iArrLength, int iNum);		// å“ˆå¸ŒæŸ¥æ‰¾
+int  hash_function(int iNum, int iHashLength, int iHashType);	// æ•£åˆ—å‡½æ•°
 int  hash_function_address(int iNum, int iHashLength,
-	int iWeight, int iBias);									// Ö±½Ó¶¨Ö··¨Hash
-int  hash_function_mod(int iNum, int iHashLength);				// ³ıÁôÓàÊı·¨Hash
+	int iWeight, int iBias);									// ç›´æ¥å®šå€æ³•Hash
+int  hash_function_mod(int iNum, int iHashLength);				// é™¤ç•™ä½™æ•°æ³•Hash
 
-int  generate_prime(int iArrLength);							// ¸ù¾İÔ­Ê¼ĞòÁĞµÄ³¤¶È²úÉúÏà¶ÔÓ¦µÄÖÊÊı´óĞ¡
+int  generate_prime(int iArrLength);							// æ ¹æ®åŸå§‹åºåˆ—çš„é•¿åº¦äº§ç”Ÿç›¸å¯¹åº”çš„è´¨æ•°å¤§å°
 
 
 int search_hash(int * arrData, int iArrLength, int iNum) {
@@ -16,24 +16,24 @@ int search_hash(int * arrData, int iArrLength, int iNum) {
 }
 
 int  hash_function(int iNum, int iHashLength, int iHashType) {
-	// ¹şÏ£º¯Êı¹æÔò£º
-	// Í¨¹ıÄ³ÖÖ×ª»»¹ØÏµ£¬Ê¹¹Ø¼ü×ÖÊÊ¶ÈµÄ·ÖÉ¢µ½Ö¸¶¨´óĞ¡µÄµÄË³Ğò½á¹¹ÖĞ£¬Ô½·ÖÉ¢£¬ÔòÒÔºó²éÕÒµÄÊ±¼ä¸´ÔÓ¶ÈÔ½Ğ¡£¬¿Õ¼ä¸´ÔÓ¶ÈÔ½¸ß¡£
-	// Ëã·¨Á÷³Ì£º
-	// 1£©ÓÃ¸ø¶¨µÄ¹şÏ£º¯Êı¹¹Ôì¹şÏ£±í£»
-	// 2£©¸ù¾İÑ¡ÔñµÄ³åÍ»´¦Àí·½·¨½â¾öµØÖ·³åÍ»£»
-	//³£¼ûµÄ½â¾ö³åÍ»µÄ·½·¨£ºÀ­Á´·¨ºÍÏßĞÔÌ½²â·¨¡£
+	// å“ˆå¸Œå‡½æ•°è§„åˆ™ï¼š
+	// é€šè¿‡æŸç§è½¬æ¢å…³ç³»ï¼Œä½¿å…³é”®å­—é€‚åº¦çš„åˆ†æ•£åˆ°æŒ‡å®šå¤§å°çš„çš„é¡ºåºç»“æ„ä¸­ï¼Œè¶Šåˆ†æ•£ï¼Œåˆ™ä»¥åæŸ¥æ‰¾çš„æ—¶é—´å¤æ‚åº¦è¶Šå°ï¼Œç©ºé—´å¤æ‚åº¦è¶Šé«˜ã€‚
+	// ç®—æ³•æµç¨‹ï¼š
+	// 1ï¼‰ç”¨ç»™å®šçš„å“ˆå¸Œå‡½æ•°æ„é€ å“ˆå¸Œè¡¨ï¼›
+	// 2ï¼‰æ ¹æ®é€‰æ‹©çš„å†²çªå¤„ç†æ–¹æ³•è§£å†³åœ°å€å†²çªï¼›
+	//å¸¸è§çš„è§£å†³å†²çªçš„æ–¹æ³•ï¼šæ‹‰é“¾æ³•å’Œçº¿æ€§æ¢æµ‹æ³•ã€‚
 
 	int iHash;
 	int iWeight, iBias;
 	if (iHashType == 0) {
-		// Ö±½Ó¶¨Ö··¨£¬¹Ø¼ü×Ö·ÖÅä²»Á¬Ğø£¬´æ´¢¿Õ¼äÀË·Ñ
-		// ¼òµ¥¡¢¾ùÔÈ£¬²»»á²úÉú³åÍ»¡£µ«ÊÇĞèÒªÊÂÏÈÖªµÀ¹Ø¼ü×ÖµÄ·Ö²¼Çé¿ö£¬ÊÊºÏ²éÕÒ±í½ÏĞ¡²¢ÇÒÁ¬ĞøµÄÇé¿ö
+		// ç›´æ¥å®šå€æ³•ï¼Œå…³é”®å­—åˆ†é…ä¸è¿ç»­ï¼Œå­˜å‚¨ç©ºé—´æµªè´¹
+		// ç®€å•ã€å‡åŒ€ï¼Œä¸ä¼šäº§ç”Ÿå†²çªã€‚ä½†æ˜¯éœ€è¦äº‹å…ˆçŸ¥é“å…³é”®å­—çš„åˆ†å¸ƒæƒ…å†µï¼Œé€‚åˆæŸ¥æ‰¾è¡¨è¾ƒå°å¹¶ä¸”è¿ç»­çš„æƒ…å†µ
 		iHash = iWeight * iNum + iBias;
 	}
 
 	else if (iHashType == 1) {
-		// ³ıÁôÓàÊı·¨ÊÇÓÃ¹Ø¼ü×ÖK³ıÒÔÉ¢ÁĞ±í³¤¶ÈmËùµÃÓàÊı×÷ÎªÉ¢ÁĞµØÖ·µÄ·½·¨
-		// ¼ÆËã¼òµ¥£¬ÊÊÓÃ·¶Î§¹ã
+		// é™¤ç•™ä½™æ•°æ³•æ˜¯ç”¨å…³é”®å­—Ké™¤ä»¥æ•£åˆ—è¡¨é•¿åº¦mæ‰€å¾—ä½™æ•°ä½œä¸ºæ•£åˆ—åœ°å€çš„æ–¹æ³•
+		// è®¡ç®—ç®€å•ï¼Œé€‚ç”¨èŒƒå›´å¹¿
 		iHash = iNum % iHashLength;
 	}
 

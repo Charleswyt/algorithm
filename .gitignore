@@ -1,0 +1,7 @@
+
+*.tlog
+*.idb
+*.filters
+*.vcxproj
+*.db
+*.ini

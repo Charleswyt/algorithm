@@ -1,17 +1,17 @@
-#ifndef QUENE_H
+ï»¿#ifndef QUENE_H
 #define QUENE_H
 
 #define INIT_QUENE_LENGTH 10
 #define QUENE_INCREMENT   1
 
-// ±äÁ¿¶¨Òå
+// å˜é‡å®šä¹‰
 typedef int ElementType;
 
 
 typedef struct Quene {
-	ElementType* pBase;		// Õ»µ×Ö¸Õë
-	ElementType* pTop;		// Õ»¶¥Ö¸Õë
-	int  iStackLength;		// ¶ÑÕ»´óĞ¡
+	ElementType* pBase;		// æ ˆåº•æŒ‡é’ˆ
+	ElementType* pTop;		// æ ˆé¡¶æŒ‡é’ˆ
+	int  iStackLength;		// å †æ ˆå¤§å°
 }Stack;
 
 

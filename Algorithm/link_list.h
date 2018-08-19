@@ -1,4 +1,4 @@
-#ifndef LIST_H
+ï»¿#ifndef LIST_H
 #define LIST_H
 
 #include <stdio.h>
@@ -10,12 +10,12 @@ typedef struct Node {
 }List;
 
 /*
- * Á´±íµÄ»ù±¾²Ù×÷£º
- * ´´½¨¡¢É¾³ı¡¢ĞŞ¸Ä¡¢²åÈë¡¢ÅÅĞò
- * ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+ * é“¾è¡¨çš„åŸºæœ¬æ“ä½œï¼š
+ * åˆ›å»ºã€åˆ é™¤ã€ä¿®æ”¹ã€æ’å…¥ã€æ’åº
+ * åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º
  */
 
-// ´´½¨Á´±í»áÓĞÒÔÏÂËÄÖÖ×éºÏ£º(²»)´øÍ·½áµã£¬Í·(Î²)²å·¨
+// åˆ›å»ºé“¾è¡¨ä¼šæœ‰ä»¥ä¸‹å››ç§ç»„åˆï¼š(ä¸)å¸¦å¤´ç»“ç‚¹ï¼Œå¤´(å°¾)æ’æ³•
 List* init_list_no_head_front();
 List* init_list_no_head_back();
 
@@ -23,7 +23,7 @@ List * init_list_no_head_back() {
 	List* previous, *current, *head;
 	int iData;
 
-	// ÅĞ¶Ïµ±Ç°ÓĞÎŞÖµÊäÈë£¬ÈôÃ»ÓĞÔòÖ±½Ó·µ»Ø½áµã
+	// åˆ¤æ–­å½“å‰æœ‰æ— å€¼è¾“å…¥ï¼Œè‹¥æ²¡æœ‰åˆ™ç›´æ¥è¿”å›ç»“ç‚¹
 	if (scanf("%d", &iData) != EOF) {
 		previous = (List*)malloc(sizeof(List));
 		head = previous;
@@ -33,14 +33,14 @@ List * init_list_no_head_back() {
 	else
 		return head;
 
-	// ÏÖÔÚÒÑ¾­È·±£ÁËµÚÒ»¸ö½ÚµãÓĞÊäÈë£¬ÈôµÚ¶ş¸ö½áµã²»ÊäÈëÔò»áÌø¹ıÒÔÏÂÑ­»·
+	// ç°åœ¨å·²ç»ç¡®ä¿äº†ç¬¬ä¸€ä¸ªèŠ‚ç‚¹æœ‰è¾“å…¥ï¼Œè‹¥ç¬¬äºŒä¸ªç»“ç‚¹ä¸è¾“å…¥åˆ™ä¼šè·³è¿‡ä»¥ä¸‹å¾ªç¯
 	current = (List*)malloc(sizeof(List));
 	while (scanf("%d", &current->iData) != EOF) {
 		previous->next = current;
 		previous = current;
 		current = (List*)malloc(sizeof(List));
 	}
-	previous->next = NULL;//Ñ¡ÓÃprev¶ø²»ÊÇcurrentÊÇÎªÁË±ÜÃâÃ»ÓĞÊäÈëµÚ¶ş¸ö½áµãµÄÇé¿ö
+	previous->next = NULL;//é€‰ç”¨prevè€Œä¸æ˜¯currentæ˜¯ä¸ºäº†é¿å…æ²¡æœ‰è¾“å…¥ç¬¬äºŒä¸ªç»“ç‚¹çš„æƒ…å†µ
 	return head;
 }
 

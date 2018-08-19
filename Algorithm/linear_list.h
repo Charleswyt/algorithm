@@ -1,37 +1,37 @@
-#ifndef LINEAR_LIST_H
+ï»¿#ifndef LINEAR_LIST_H
 #define LINEAR_LIST_H
 
 #define YES 1
 #define NO  0
 #define TRUE 1
 #define FALSE 0
-#define LIST_INIT_SIZE 10			// ÏßĞÔ±í³õÊ¼»¯³¤¶È
+#define LIST_INIT_SIZE 10			// çº¿æ€§è¡¨åˆå§‹åŒ–é•¿åº¦
 
 #include <stdio.h>
 #include <stdlib.h>
 
-// ±äÁ¿¶¨Òå
+// å˜é‡å®šä¹‰
 typedef int ElementType;
 
 typedef struct{
-	ElementType* arrData;			// ÏßĞÔ±íÊ×µØÖ·
-	int iListLength;				// ÏßĞÔ±í³¤¶È(ÓÃÓÚ±íÊ¾ÏßĞÔ±íµ±Ç°µÄ´æ´¢×´Ì¬)
-	int iListSize;					// ÏßĞÔ±í¿Õ¼ä(ÓÃÓÚ±íÊ¾ÏßĞÔ±í³õÊ¼»¯Ê±ÉêÇëµÄ±äÁ¿¿Õ¼ä)
+	ElementType* arrData;			// çº¿æ€§è¡¨é¦–åœ°å€
+	int iListLength;				// çº¿æ€§è¡¨é•¿åº¦(ç”¨äºè¡¨ç¤ºçº¿æ€§è¡¨å½“å‰çš„å­˜å‚¨çŠ¶æ€)
+	int iListSize;					// çº¿æ€§è¡¨ç©ºé—´(ç”¨äºè¡¨ç¤ºçº¿æ€§è¡¨åˆå§‹åŒ–æ—¶ç”³è¯·çš„å˜é‡ç©ºé—´)
 }LinearList;
 
-// º¯ÊıÉùÃ÷
-void init_list(LinearList* L);		// ³õÊ¼»¯ÏßĞÔ±í
-void destroy_list(LinearList* L);	// Ïú»ÙÏßĞÔ±í
-void clear_list(LinearList* L);		// ÏßĞÔ±íÖÃ¿Õ
-int  isEmpty_list(LinearList* L);	// ÅĞ¶ÏÏßĞÔ±íÊÇ·ñÎª¿Õ
-int  isFull_list(LinearList* L);	// ÅĞ¶ÏÏßĞÔ±íÊÇ·ñÒÑÂú
+// å‡½æ•°å£°æ˜
+void init_list(LinearList* L);		// åˆå§‹åŒ–çº¿æ€§è¡¨
+void destroy_list(LinearList* L);	// é”€æ¯çº¿æ€§è¡¨
+void clear_list(LinearList* L);		// çº¿æ€§è¡¨ç½®ç©º
+int  isEmpty_list(LinearList* L);	// åˆ¤æ–­çº¿æ€§è¡¨æ˜¯å¦ä¸ºç©º
+int  isFull_list(LinearList* L);	// åˆ¤æ–­çº¿æ€§è¡¨æ˜¯å¦å·²æ»¡
 
 
-// º¯Êı¶¨Òå
+// å‡½æ•°å®šä¹‰
 void init_list(LinearList* L) {
 	L->arrData = (ElementType*)malloc(sizeof(ElementType) * LIST_INIT_SIZE);
 	if (L->arrData == NULL) {
-		printf("ÏßĞÔ±í³õÊ¼»¯Ê§°Ü\n");
+		printf("çº¿æ€§è¡¨åˆå§‹åŒ–å¤±è´¥\n");
 	}
 	L->iListLength = 0;
 	L->iListSize = LIST_INIT_SIZE;
@@ -39,7 +39,7 @@ void init_list(LinearList* L) {
 
 void destroy_list(LinearList* L) {
 	if (L->arrData == NULL) {
-		printf("µ±Ç°ÏßĞÔ±íÉĞÎ´³õÊ¼»¯\n");
+		printf("å½“å‰çº¿æ€§è¡¨å°šæœªåˆå§‹åŒ–\n");
 		return;
 	}
 	else {

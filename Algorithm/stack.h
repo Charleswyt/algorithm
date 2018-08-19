@@ -1,392 +1,392 @@
-#ifndef STACK_H
-#define STACK_H
-
-#define YES 1
-#define NO  0
-#define INIT_STACK_LENGTH 10
-#define STACK_INCREMENT 1
-
-#include <stdio.h>
-#include <stdlib.h>
-
-// ±‰¡ø∂®“Â
-typedef int ElementType;
-
-// æ≤Ã¨ ˝◊È
-typedef struct Stack{
-	ElementType stack[INIT_STACK_LENGTH];
-	int iTopPoint;
-}Stack_Static;
-
-// ∂ØÃ¨ ˝◊È
-typedef struct Stack {
-	ElementType* pBase;		// ’ªµ◊÷∏’Î
-	ElementType* pTop;		// ’ª∂•÷∏’Î
-	int  iStackLength;		// ∂—’ª¥Û–°
-}Stack_Dynamic;
-
-// µ•¡¥±Ì µœ÷
-typedef struct STACK_NODE
-{
-	ElementType iNum;
-	struct STACK_NODE *next;
-} StackNode;
-
-/*
- ’ª£®stack£©µƒœ‘÷¯Ãÿµ„ «∫ÛΩ¯œ»≥ˆ£®Last - In First - Out, LIFO£©£¨
- ∆‰ µœ÷µƒ∑Ω∑®”–»˝÷÷ø…—°∑Ω∞∏£∫æ≤Ã¨ ˝◊È°¢∂ØÃ¨∑÷≈‰µƒ ˝◊È°¢∂ØÃ¨∑÷≈‰µƒ¡¥ ΩΩ·ππ°£
- 1.æ≤Ã¨ ˝◊È£∫Ãÿµ„ «“™«ÛΩ·ππµƒ≥§∂»πÃ∂®£¨∂¯«“≥§∂»‘⁄±‡“Î ±∫ÚæÕµ√»∑∂®°£∆‰”≈µ„ «Ω·ππºÚµ•£¨ µœ÷∆¿¥∑Ω±„∂¯≤ª»›“◊≥ˆ¥Ì°£∂¯»±µ„æÕ «≤ªπª¡ÈªÓ“‘º∞πÃ∂®≥§∂»≤ª»›“◊øÿ÷∆£¨  ”√”⁄÷™µ¿√˜»∑≥§∂»µƒ≥°∫œ°£
- 2.∂ØÃ¨ ˝◊È£∫Ãÿµ„ «≥§∂»ø…“‘‘⁄‘À–– ±∫Ú≤≈»∑∂®“‘º∞ø…“‘∏¸∏ƒ‘≠¿¥ ˝◊Èµƒ≥§∂»°£”≈µ„ «¡ÈªÓ£¨»±µ„ «”…¥Àª·‘ˆº”≥Ã–Úµƒ∏¥‘”–‘°£
- 3.¡¥ ΩΩ·ππ£∫Ãÿµ„ «Œﬁ≥§∂»…œœﬂ£¨–Ë“™µƒ ±∫Ú‘Ÿ…Í«Î∑÷≈‰ƒ⁄¥Êø’º‰£¨ø…◊Ó¥Û≥Ã∂»…œ µœ÷¡ÈªÓ–‘°£»±µ„ «¡¥ ΩΩ·ππµƒ¡¥Ω”◊÷∂Œ–Ë“™œ˚∫ƒ“ª∂®µƒƒ⁄¥Ê£¨‘⁄¡¥ ΩΩ·ππ÷–∑√Œ “ª∏ˆÃÿ∂®‘™Àÿµƒ–ß¬ ≤ª»Á ˝◊È°£
-*/
-
-/************************************************************************/
-/*                             æ≤Ã¨ ˝◊È µœ÷                             */
-/************************************************************************/
-
-// ∫Ø ˝…˘√˜
-void init_stack(Stack_Static* pStack);								// ≥ı ºªØ’ªø’º‰
-void push(int iNumber);												//  ˝æ›»Î’ª
-void pop(void);														//  ˝æ›≥ˆ’ª
-int  isEmpty_stack(void);											// ≈–∂œµ±«∞’ª «∑Òø’
-int  isFull_stack(void);											// ≈–∂œµ±«∞’ª «∑Ò¬˙
-void clear_stack(void);												// «Âø’’ª
-int  get_stack_length(void);										// ªÒ»°’ª¥Û–°
-void printf_stack_info(void);										// œ‘ æ’ªƒ⁄‘™Àÿ
-ElementType get_top(void);											// ªÒ»°’ª∂•‘™Àÿ
-void test_stack_static(void);										// ≤‚ ‘∫Ø ˝
-
-// ∫Ø ˝∂®“Â
-void init_stack(Stack_Static* pStack) {
-	Stack_Static stack;
-	pStack = &stack;
-	pStack->iTopPoint = -1;
-}
-
-void push(int iNumber) {
-	if (isFull_stack() == YES) {
-		printf("µ±«∞’ª“—¬˙\n");
-	}
-	else {
-		stack[iTopPoint++] = iNumber;
-		//printf("iTopPoint = %d\n", iTopPoint);
-	}
-}
-
-void pop(void) {
-	if (isEmpty_stack() == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-	}
-	else{
-		printf("‘™Àÿ%d≥ˆ’ª\n", stack[iTopPoint-1]);
-		iTopPoint--;
-		//printf("iTopPoint = %d\n", iTopPoint);
-	}
-}
-
-int isEmpty_stack(void) {
-	int iFlag;
-	if (iTopPoint == -1) {
-		iFlag = YES;
-	}
-	else {
-		iFlag = NO;
-	}
-	return iFlag;
-}
-
-int isFull_stack(void) {
-	int iFlag;
-	if (iTopPoint == INIT_STACK_LENGTH - 1) {
-		iFlag = YES;
-	}
-	else {
-		iFlag = NO;
-	}
-	return iFlag;
-}
-
-void clear_stack(void) {
-	iTopPoint = -1;
-}
-
-int get_stack_length(void) {
-	return INIT_STACK_LENGTH;
-}
-
-void printf_stack_info(void) {
-	int iTempPoint;
-	if (isEmpty_stack() == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-		return;
-	}
-	else {
-		iTempPoint = -1;
-		printf("µ±«∞’ªƒ⁄‘™ÀÿŒ™£∫");
-		while(iTempPoint != iTopPoint){
-			printf("%d ", stack[iTempPoint++]);
-		}
-		printf("\n");
-	}
-}
-
-ElementType get_top(void) {
-	return stack[iTopPoint];
-}
-
-void test_stack_static(void) {
-	pop();
-	push(10); push(9); push(7); push(6); push(5);
-	printf_stack_info();
-	printf("µ±«∞’ª¥Û–°Œ™£∫%d\n", get_stack_length());
-	pop(); pop();
-	printf_stack_info();
-	printf("%d", iTopPoint);
-
-}
-
-/************************************************************************/
-/*                             ∂ØÃ¨ ˝◊È µœ÷                             */
-/************************************************************************/
- 
-// ∫Ø ˝…˘√˜
-void create_stack(Stack_Dynamic* pStack);										// ¥¥Ω®∂—’ª
-void destory_stack(Stack_Dynamic* pStack);										// œ˙ªŸ∂—’ª
-void fill_stack(Stack_Dynamic* pStack, ElementType* arrData, int iArrLength);	// ∂—’ª∏≥÷µ
-void push(Stack_Dynamic* pStack, int iNumber);									//  ˝æ›»Î’ª
-void pop(Stack_Dynamic* pStack);												//  ˝æ›≥ˆ’ª
-int  isEmpty_stack(Stack_Dynamic* pStack);										// ≈–∂œµ±«∞’ª «∑Òø’
-int  isFull_stack(Stack_Dynamic* pStack);										// ≈–∂œµ±«∞’ª «∑Ò¬˙
-void clear_stack(Stack_Dynamic* pStack);										// «Âø’’ª
-int  get_stack_length(Stack_Dynamic* pStack);									// ªÒ»°’ª¥Û–°
-void printf_stack_info(Stack_Dynamic* pStack);									// œ‘ æ’ªƒ⁄‘™Àÿ
-ElementType get_top(Stack_Dynamic* pStack);										// ªÒ»°’ª∂•‘™Àÿ
-
-void test_stack_dynamic(void);													// ≤‚ ‘¥˙¬Î
-
-// ∫Ø ˝∂®“Â
-void create_stack(Stack_Dynamic* pStack) {
-	pStack->pBase = (ElementType*)malloc(sizeof(ElementType) * INIT_STACK_LENGTH);
-	if (!pStack->pBase) {
-		printf("’ª≥ı ºªØ ß∞‹\n");
-	}
-	else {
-		pStack->pTop = pStack->pBase;
-		pStack->iStackLength = INIT_STACK_LENGTH;
-		printf("’ª≥ı ºªØ≥…π¶\n");
-	}
-}
-
-void fill_stack(Stack_Dynamic* pStack, ElementType* arrData, int iArrLength) {
-	int iFlag;
-	int i;
-	iFlag = isEmpty_stack(pStack);
-	if (iFlag == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-		return;
-	}
-	else {
-		i = 0;
-		pStack->pTop = pStack->pBase;
-		if (iArrLength > INIT_STACK_LENGTH) {
-			pStack->pBase = (ElementType*)realloc(pStack->pBase, sizeof(ElementType) * iArrLength);
-			pStack->iStackLength = iArrLength;
-			while (pStack->pTop - pStack->pBase < iArrLength) {
-				*(pStack->pTop) = arrData[i];
-				pStack->pTop++;
-				i++;
-			}
-		}
-		else {
-			while (pStack->pTop - pStack->pBase < iArrLength) {
-				*(pStack->pTop) = arrData[i];
-				pStack->pTop++;
-				i++;
-			}
-			while(pStack->pTop - pStack->pBase >= iArrLength && pStack->pTop - pStack->pBase < INIT_STACK_LENGTH){
-					*(pStack->pTop) = 0;
-					pStack->pTop++;
-			}
-		}
-	}
-}
-
-void printf_stack_info(Stack_Dynamic* pStack) {
-	ElementType* pTemp;
-	int iFlag;
-	iFlag = isEmpty_stack(pStack);
-	if (iFlag == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-		printf("µ±«∞’ª¥Û–°Œ™£∫%d\n", pStack->iStackLength);
-		return;
-	}
-	else{
-		pTemp = pStack->pBase;
-
-		printf("∂—’ªµ±«∞∏˜‘™Àÿ∑÷±Œ™£∫\n");
-		while (pTemp != pStack->pTop) {
-			printf("%d ", *pTemp);
-			pTemp++;
-		}
-		printf("\nµ±«∞’ª¥Û–°Œ™£∫%d\n", pStack->iStackLength);
-	}
-}
-
-void destory_stack(Stack_Dynamic* pStack) {
-	if(pStack == NULL){
-		printf("µ±«∞’ª…–Œ¥≥ı ºªØ\n");
-		return;
-	}
-	else {
-		free(pStack->pBase);
-		pStack = NULL;
-	}
-}
-
-int isEmpty_stack(Stack_Dynamic* pStack) {
-	int iFlag;
-	if (pStack->pBase == pStack->pTop) {
-		iFlag = YES;
-	}
-	else {
-		iFlag = NO;
-	}
-
-	return iFlag;
-}
-
-ElementType get_top(Stack_Dynamic* pStack) {
-	int iFlag;
-	ElementType TopNumber;
-
-	iFlag = isEmpty_stack(pStack);
-	if (iFlag == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-		return 0;
-	}
-	else {
-		TopNumber = *(pStack->pTop - 1);
-	}
-	return TopNumber;
-}
-
-int isFull_stack(Stack_Dynamic* pStack) {
-	int iFlag;
-	if (pStack->pTop - pStack->pBase == pStack->iStackLength) {
-		iFlag = YES;
-	}
-	else {
-		iFlag = NO;
-	}
-	return iFlag;
-}
-
-void push(Stack_Dynamic* pStack, int iNumber) {
-	int iFlag;
-	iFlag = isFull_stack(pStack);
-	if (iFlag == YES) {
-		pStack->pBase = (ElementType*)realloc(pStack->pBase, 
-			sizeof(ElementType) * (pStack->iStackLength + STACK_INCREMENT));
-		pStack->iStackLength++;
-		*(pStack->pTop) = iNumber;
-		pStack->pTop++;
-		printf("‘™Àÿ%d»Î’ª\n", iNumber);
-	}
-	else {
-		*(pStack->pTop) = iNumber;
-		pStack->pTop++;
-		printf("‘™Àÿ%d»Î’ª\n", iNumber);
-	}
-}
-
-void pop(Stack_Dynamic* pStack) {
-	int iFlag;
-	iFlag = isEmpty_stack(pStack);
-	if (iFlag == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-		return;
-	}
-	else{
-		printf("‘™Àÿ%d≥ˆ’ª\n", *(pStack->pTop - 1));
-		pStack->pTop--;
-	}
-}
-
-void clear_stack(Stack_Dynamic* pStack) {
-	int iFlag;
-	iFlag = isEmpty_stack(pStack);
-	if (iFlag == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-	}
-	else {
-		pStack->pTop = pStack->pBase;
-		pStack->iStackLength = 0;
-		printf("µ±«∞’ª“—«Âø’\n");
-	}
-}
-
-int get_stack_length(Stack_Dynamic* pStack) {
-	int iStackLength;
-	iStackLength = pStack->iStackLength;
-	return iStackLength;
-}
-
-void test_stack_dynamic(void) {
-	Stack_Dynamic stack, *pStack;
-	ElementType* arrData;
-	int iArrLength = 6;
-	ElementType Min = 10, Max = 100;
-
-	pStack = &stack;
-	arrData = (ElementType*)malloc(sizeof(ElementType) * iArrLength);
-	genRand(arrData, Min, Max, iArrLength);
-	
-	create_stack(pStack);
-	fill_stack(pStack, arrData, iArrLength);
-	printf_stack_info(pStack);
-	clear_stack(pStack);
-	pop(pStack); pop(pStack); pop(pStack);
-	push(pStack, 1); push(pStack, 2); push(pStack, 3); push(pStack, 4); push(pStack, 5);
-	printf_stack_info(pStack);
-	destory_stack(pStack);
-
-	free(arrData);
-	arrData = NULL;
-}
-
-/************************************************************************/
-/*                               ¡¥±Ì µœ÷                               */
-/************************************************************************/
-
-// ∫Ø ˝…˘√˜
-void push(StackNode* pStack);									// »Î’ª
-void pop(StackNode* pStack);
-int  isEmpty(StackNode* pStack);								// ≈–∂œµ±«∞’ª «∑ÒŒ™ø’
-
-void test_stack_link(void);										// ≤‚ ‘≥Ã–Ú
-
-// ∫Ø ˝∂®“Â
-int isEmpty(StackNode* pStack) {
-	int iFlag;
-	if (pStack == NULL) {
-		iFlag = YES;
-	}
-	else {
-		iFlag = NO;
-	}
-	return iFlag;
-}
-
-void push(StackNode* pStack, int iNumber) {
-
-}
-
-void test_stack_link(void) {
-	StackNode stack, *pStack;
-	pStack = &stack;
-	if (isEmpty(pStack) == YES) {
-		printf("µ±«∞’ªŒ™ø’\n");
-	}
-}
-
-#endif // !STACK_H
+Ôªø//#ifndef STACK_H
+//#define STACK_H
+//
+//#define YES 1
+//#define NO  0
+//#define INIT_STACK_LENGTH 10
+//#define STACK_INCREMENT 1
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//// ÂèòÈáèÂÆö‰πâ
+//typedef int ElementType;
+//
+//// ÈùôÊÄÅÊï∞ÁªÑ
+//typedef struct Stack{
+//	ElementType stack[INIT_STACK_LENGTH];
+//	int iTopPoint;
+//}Stack_Static;
+//
+//// Âä®ÊÄÅÊï∞ÁªÑ
+//typedef struct Stack {
+//	ElementType* pBase;		// Ê†àÂ∫ïÊåáÈíà
+//	ElementType* pTop;		// Ê†àÈ°∂ÊåáÈíà
+//	int  iStackLength;		// Â†ÜÊ†àÂ§ßÂ∞è
+//}Stack_Dynamic;
+//
+//// ÂçïÈìæË°®ÂÆûÁé∞
+//typedef struct STACK_NODE
+//{
+//	ElementType iNum;
+//	struct STACK_NODE *next;
+//} StackNode;
+//
+///*
+// Ê†àÔºàstackÔºâÁöÑÊòæËëóÁâπÁÇπÊòØÂêéËøõÂÖàÂá∫ÔºàLast - In First - Out, LIFOÔºâÔºå
+// ÂÖ∂ÂÆûÁé∞ÁöÑÊñπÊ≥ïÊúâ‰∏âÁßçÂèØÈÄâÊñπÊ°àÔºöÈùôÊÄÅÊï∞ÁªÑ„ÄÅÂä®ÊÄÅÂàÜÈÖçÁöÑÊï∞ÁªÑ„ÄÅÂä®ÊÄÅÂàÜÈÖçÁöÑÈìæÂºèÁªìÊûÑ„ÄÇ
+// 1.ÈùôÊÄÅÊï∞ÁªÑÔºöÁâπÁÇπÊòØË¶ÅÊ±ÇÁªìÊûÑÁöÑÈïøÂ∫¶Âõ∫ÂÆöÔºåËÄå‰∏îÈïøÂ∫¶Âú®ÁºñËØëÊó∂ÂÄôÂ∞±ÂæóÁ°ÆÂÆö„ÄÇÂÖ∂‰ºòÁÇπÊòØÁªìÊûÑÁÆÄÂçïÔºåÂÆûÁé∞Ëµ∑Êù•Êñπ‰æøËÄå‰∏çÂÆπÊòìÂá∫Èîô„ÄÇËÄåÁº∫ÁÇπÂ∞±ÊòØ‰∏çÂ§üÁÅµÊ¥ª‰ª•ÂèäÂõ∫ÂÆöÈïøÂ∫¶‰∏çÂÆπÊòìÊéßÂà∂ÔºåÈÄÇÁî®‰∫éÁü•ÈÅìÊòéÁ°ÆÈïøÂ∫¶ÁöÑÂú∫Âêà„ÄÇ
+// 2.Âä®ÊÄÅÊï∞ÁªÑÔºöÁâπÁÇπÊòØÈïøÂ∫¶ÂèØ‰ª•Âú®ËøêË°åÊó∂ÂÄôÊâçÁ°ÆÂÆö‰ª•ÂèäÂèØ‰ª•Êõ¥ÊîπÂéüÊù•Êï∞ÁªÑÁöÑÈïøÂ∫¶„ÄÇ‰ºòÁÇπÊòØÁÅµÊ¥ªÔºåÁº∫ÁÇπÊòØÁî±Ê≠§‰ºöÂ¢ûÂä†Á®ãÂ∫èÁöÑÂ§çÊùÇÊÄß„ÄÇ
+// 3.ÈìæÂºèÁªìÊûÑÔºöÁâπÁÇπÊòØÊó†ÈïøÂ∫¶‰∏äÁ∫øÔºåÈúÄË¶ÅÁöÑÊó∂ÂÄôÂÜçÁî≥ËØ∑ÂàÜÈÖçÂÜÖÂ≠òÁ©∫Èó¥ÔºåÂèØÊúÄÂ§ßÁ®ãÂ∫¶‰∏äÂÆûÁé∞ÁÅµÊ¥ªÊÄß„ÄÇÁº∫ÁÇπÊòØÈìæÂºèÁªìÊûÑÁöÑÈìæÊé•Â≠óÊÆµÈúÄË¶ÅÊ∂àËÄó‰∏ÄÂÆöÁöÑÂÜÖÂ≠òÔºåÂú®ÈìæÂºèÁªìÊûÑ‰∏≠ËÆøÈóÆ‰∏Ä‰∏™ÁâπÂÆöÂÖÉÁ¥†ÁöÑÊïàÁéá‰∏çÂ¶ÇÊï∞ÁªÑ„ÄÇ
+//*/
+//
+///************************************************************************/
+///*                             ÈùôÊÄÅÊï∞ÁªÑÂÆûÁé∞                             */
+///************************************************************************/
+//
+//// ÂáΩÊï∞Â£∞Êòé
+//void init_stack(Stack_Static* pStack);								// ÂàùÂßãÂåñÊ†àÁ©∫Èó¥
+//void push(int iNumber);												// Êï∞ÊçÆÂÖ•Ê†à
+//void pop(void);														// Êï∞ÊçÆÂá∫Ê†à
+//int  isEmpty_stack(void);											// Âà§Êñ≠ÂΩìÂâçÊ†àÊòØÂê¶Á©∫
+//int  isFull_stack(void);											// Âà§Êñ≠ÂΩìÂâçÊ†àÊòØÂê¶Êª°
+//void clear_stack(void);												// Ê∏ÖÁ©∫Ê†à
+//int  get_stack_length(void);										// Ëé∑ÂèñÊ†àÂ§ßÂ∞è
+//void printf_stack_info(void);										// ÊòæÁ§∫Ê†àÂÜÖÂÖÉÁ¥†
+//ElementType get_top(void);											// Ëé∑ÂèñÊ†àÈ°∂ÂÖÉÁ¥†
+//void test_stack_static(void);										// ÊµãËØïÂáΩÊï∞
+//
+//// ÂáΩÊï∞ÂÆö‰πâ
+//void init_stack(Stack_Static* pStack) {
+//	Stack_Static stack;
+//	pStack = &stack;
+//	pStack->iTopPoint = -1;
+//}
+//
+//void push(int iNumber) {
+//	if (isFull_stack() == YES) {
+//		printf("ÂΩìÂâçÊ†àÂ∑≤Êª°\n");
+//	}
+//	else {
+//		stack[iTopPoint++] = iNumber;
+//		//printf("iTopPoint = %d\n", iTopPoint);
+//	}
+//}
+//
+//void pop(void) {
+//	if (isEmpty_stack() == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//	}
+//	else{
+//		printf("ÂÖÉÁ¥†%dÂá∫Ê†à\n", stack[iTopPoint-1]);
+//		iTopPoint--;
+//		//printf("iTopPoint = %d\n", iTopPoint);
+//	}
+//}
+//
+//int isEmpty_stack(void) {
+//	int iFlag;
+//	if (iTopPoint == -1) {
+//		iFlag = YES;
+//	}
+//	else {
+//		iFlag = NO;
+//	}
+//	return iFlag;
+//}
+//
+//int isFull_stack(void) {
+//	int iFlag;
+//	if (iTopPoint == INIT_STACK_LENGTH - 1) {
+//		iFlag = YES;
+//	}
+//	else {
+//		iFlag = NO;
+//	}
+//	return iFlag;
+//}
+//
+//void clear_stack(void) {
+//	iTopPoint = -1;
+//}
+//
+//int get_stack_length(void) {
+//	return INIT_STACK_LENGTH;
+//}
+//
+//void printf_stack_info(void) {
+//	int iTempPoint;
+//	if (isEmpty_stack() == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//		return;
+//	}
+//	else {
+//		iTempPoint = -1;
+//		printf("ÂΩìÂâçÊ†àÂÜÖÂÖÉÁ¥†‰∏∫Ôºö");
+//		while(iTempPoint != iTopPoint){
+//			printf("%d ", stack[iTempPoint++]);
+//		}
+//		printf("\n");
+//	}
+//}
+//
+//ElementType get_top(void) {
+//	return stack[iTopPoint];
+//}
+//
+//void test_stack_static(void) {
+//	pop();
+//	push(10); push(9); push(7); push(6); push(5);
+//	printf_stack_info();
+//	printf("ÂΩìÂâçÊ†àÂ§ßÂ∞è‰∏∫Ôºö%d\n", get_stack_length());
+//	pop(); pop();
+//	printf_stack_info();
+//	printf("%d", iTopPoint);
+//
+//}
+//
+///************************************************************************/
+///*                             Âä®ÊÄÅÊï∞ÁªÑÂÆûÁé∞                             */
+///************************************************************************/
+// 
+//// ÂáΩÊï∞Â£∞Êòé
+//void create_stack(Stack_Dynamic* pStack);										// ÂàõÂª∫Â†ÜÊ†à
+//void destory_stack(Stack_Dynamic* pStack);										// ÈîÄÊØÅÂ†ÜÊ†à
+//void fill_stack(Stack_Dynamic* pStack, ElementType* arrData, int iArrLength);	// Â†ÜÊ†àËµãÂÄº
+//void push(Stack_Dynamic* pStack, int iNumber);									// Êï∞ÊçÆÂÖ•Ê†à
+//void pop(Stack_Dynamic* pStack);												// Êï∞ÊçÆÂá∫Ê†à
+//int  isEmpty_stack(Stack_Dynamic* pStack);										// Âà§Êñ≠ÂΩìÂâçÊ†àÊòØÂê¶Á©∫
+//int  isFull_stack(Stack_Dynamic* pStack);										// Âà§Êñ≠ÂΩìÂâçÊ†àÊòØÂê¶Êª°
+//void clear_stack(Stack_Dynamic* pStack);										// Ê∏ÖÁ©∫Ê†à
+//int  get_stack_length(Stack_Dynamic* pStack);									// Ëé∑ÂèñÊ†àÂ§ßÂ∞è
+//void printf_stack_info(Stack_Dynamic* pStack);									// ÊòæÁ§∫Ê†àÂÜÖÂÖÉÁ¥†
+//ElementType get_top(Stack_Dynamic* pStack);										// Ëé∑ÂèñÊ†àÈ°∂ÂÖÉÁ¥†
+//
+//void test_stack_dynamic(void);													// ÊµãËØï‰ª£Á†Å
+//
+//// ÂáΩÊï∞ÂÆö‰πâ
+//void create_stack(Stack_Dynamic* pStack) {
+//	pStack->pBase = (ElementType*)malloc(sizeof(ElementType) * INIT_STACK_LENGTH);
+//	if (!pStack->pBase) {
+//		printf("Ê†àÂàùÂßãÂåñÂ§±Ë¥•\n");
+//	}
+//	else {
+//		pStack->pTop = pStack->pBase;
+//		pStack->iStackLength = INIT_STACK_LENGTH;
+//		printf("Ê†àÂàùÂßãÂåñÊàêÂäü\n");
+//	}
+//}
+//
+//void fill_stack(Stack_Dynamic* pStack, ElementType* arrData, int iArrLength) {
+//	int iFlag;
+//	int i;
+//	iFlag = isEmpty_stack(pStack);
+//	if (iFlag == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//		return;
+//	}
+//	else {
+//		i = 0;
+//		pStack->pTop = pStack->pBase;
+//		if (iArrLength > INIT_STACK_LENGTH) {
+//			pStack->pBase = (ElementType*)realloc(pStack->pBase, sizeof(ElementType) * iArrLength);
+//			pStack->iStackLength = iArrLength;
+//			while (pStack->pTop - pStack->pBase < iArrLength) {
+//				*(pStack->pTop) = arrData[i];
+//				pStack->pTop++;
+//				i++;
+//			}
+//		}
+//		else {
+//			while (pStack->pTop - pStack->pBase < iArrLength) {
+//				*(pStack->pTop) = arrData[i];
+//				pStack->pTop++;
+//				i++;
+//			}
+//			while(pStack->pTop - pStack->pBase >= iArrLength && pStack->pTop - pStack->pBase < INIT_STACK_LENGTH){
+//					*(pStack->pTop) = 0;
+//					pStack->pTop++;
+//			}
+//		}
+//	}
+//}
+//
+//void printf_stack_info(Stack_Dynamic* pStack) {
+//	ElementType* pTemp;
+//	int iFlag;
+//	iFlag = isEmpty_stack(pStack);
+//	if (iFlag == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//		printf("ÂΩìÂâçÊ†àÂ§ßÂ∞è‰∏∫Ôºö%d\n", pStack->iStackLength);
+//		return;
+//	}
+//	else{
+//		pTemp = pStack->pBase;
+//
+//		printf("Â†ÜÊ†àÂΩìÂâçÂêÑÂÖÉÁ¥†ÂàÜÂà´‰∏∫Ôºö\n");
+//		while (pTemp != pStack->pTop) {
+//			printf("%d ", *pTemp);
+//			pTemp++;
+//		}
+//		printf("\nÂΩìÂâçÊ†àÂ§ßÂ∞è‰∏∫Ôºö%d\n", pStack->iStackLength);
+//	}
+//}
+//
+//void destory_stack(Stack_Dynamic* pStack) {
+//	if(pStack == NULL){
+//		printf("ÂΩìÂâçÊ†àÂ∞öÊú™ÂàùÂßãÂåñ\n");
+//		return;
+//	}
+//	else {
+//		free(pStack->pBase);
+//		pStack = NULL;
+//	}
+//}
+//
+//int isEmpty_stack(Stack_Dynamic* pStack) {
+//	int iFlag;
+//	if (pStack->pBase == pStack->pTop) {
+//		iFlag = YES;
+//	}
+//	else {
+//		iFlag = NO;
+//	}
+//
+//	return iFlag;
+//}
+//
+//ElementType get_top(Stack_Dynamic* pStack) {
+//	int iFlag;
+//	ElementType TopNumber;
+//
+//	iFlag = isEmpty_stack(pStack);
+//	if (iFlag == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//		return 0;
+//	}
+//	else {
+//		TopNumber = *(pStack->pTop - 1);
+//	}
+//	return TopNumber;
+//}
+//
+//int isFull_stack(Stack_Dynamic* pStack) {
+//	int iFlag;
+//	if (pStack->pTop - pStack->pBase == pStack->iStackLength) {
+//		iFlag = YES;
+//	}
+//	else {
+//		iFlag = NO;
+//	}
+//	return iFlag;
+//}
+//
+//void push(Stack_Dynamic* pStack, int iNumber) {
+//	int iFlag;
+//	iFlag = isFull_stack(pStack);
+//	if (iFlag == YES) {
+//		pStack->pBase = (ElementType*)realloc(pStack->pBase, 
+//			sizeof(ElementType) * (pStack->iStackLength + STACK_INCREMENT));
+//		pStack->iStackLength++;
+//		*(pStack->pTop) = iNumber;
+//		pStack->pTop++;
+//		printf("ÂÖÉÁ¥†%dÂÖ•Ê†à\n", iNumber);
+//	}
+//	else {
+//		*(pStack->pTop) = iNumber;
+//		pStack->pTop++;
+//		printf("ÂÖÉÁ¥†%dÂÖ•Ê†à\n", iNumber);
+//	}
+//}
+//
+//void pop(Stack_Dynamic* pStack) {
+//	int iFlag;
+//	iFlag = isEmpty_stack(pStack);
+//	if (iFlag == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//		return;
+//	}
+//	else{
+//		printf("ÂÖÉÁ¥†%dÂá∫Ê†à\n", *(pStack->pTop - 1));
+//		pStack->pTop--;
+//	}
+//}
+//
+//void clear_stack(Stack_Dynamic* pStack) {
+//	int iFlag;
+//	iFlag = isEmpty_stack(pStack);
+//	if (iFlag == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//	}
+//	else {
+//		pStack->pTop = pStack->pBase;
+//		pStack->iStackLength = 0;
+//		printf("ÂΩìÂâçÊ†àÂ∑≤Ê∏ÖÁ©∫\n");
+//	}
+//}
+//
+//int get_stack_length(Stack_Dynamic* pStack) {
+//	int iStackLength;
+//	iStackLength = pStack->iStackLength;
+//	return iStackLength;
+//}
+//
+//void test_stack_dynamic(void) {
+//	Stack_Dynamic stack, *pStack;
+//	ElementType* arrData;
+//	int iArrLength = 6;
+//	ElementType Min = 10, Max = 100;
+//
+//	pStack = &stack;
+//	arrData = (ElementType*)malloc(sizeof(ElementType) * iArrLength);
+//	genRand(arrData, Min, Max, iArrLength);
+//	
+//	create_stack(pStack);
+//	fill_stack(pStack, arrData, iArrLength);
+//	printf_stack_info(pStack);
+//	clear_stack(pStack);
+//	pop(pStack); pop(pStack); pop(pStack);
+//	push(pStack, 1); push(pStack, 2); push(pStack, 3); push(pStack, 4); push(pStack, 5);
+//	printf_stack_info(pStack);
+//	destory_stack(pStack);
+//
+//	free(arrData);
+//	arrData = NULL;
+//}
+//
+///************************************************************************/
+///*                               ÈìæË°®ÂÆûÁé∞                               */
+///************************************************************************/
+//
+//// ÂáΩÊï∞Â£∞Êòé
+//void push(StackNode* pStack);									// ÂÖ•Ê†à
+//void pop(StackNode* pStack);
+//int  isEmpty(StackNode* pStack);								// Âà§Êñ≠ÂΩìÂâçÊ†àÊòØÂê¶‰∏∫Á©∫
+//
+//void test_stack_link(void);										// ÊµãËØïÁ®ãÂ∫è
+//
+//// ÂáΩÊï∞ÂÆö‰πâ
+//int isEmpty(StackNode* pStack) {
+//	int iFlag;
+//	if (pStack == NULL) {
+//		iFlag = YES;
+//	}
+//	else {
+//		iFlag = NO;
+//	}
+//	return iFlag;
+//}
+//
+//void push(StackNode* pStack, int iNumber) {
+//
+//}
+//
+//void test_stack_link(void) {
+//	StackNode stack, *pStack;
+//	pStack = &stack;
+//	if (isEmpty(pStack) == YES) {
+//		printf("ÂΩìÂâçÊ†à‰∏∫Á©∫\n");
+//	}
+//}
+//
+//#endif // !STACK_H

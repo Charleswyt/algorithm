@@ -1,4 +1,4 @@
-#ifndef TREE_H
+ï»¿#ifndef TREE_H
 #define TREE_H
 
 #include <stdlib.h>
@@ -7,16 +7,16 @@ typedef int ElementType;
 
 typedef struct TreeNode
 {
-	ElementType data;				// ÊıÖµÓò
-	struct TreeNode* pLeftChiled;	// ×ó½Úµã
-	struct TreeNode* pRightChild;	// ÓÒ½Úµã
-}TreeNode£¬*pTreeNode;
+	ElementType data;				// æ•°å€¼åŸŸ
+	struct TreeNode* pLeftChiled;	// å·¦èŠ‚ç‚¹
+	struct TreeNode* pRightChild;	// å³èŠ‚ç‚¹
+}TreeNodeï¼Œ*pTreeNode;
 
-// º¯ÊıÉùÃ÷
-void create_tree(TreeNode** pRoot, int * arrData ,int iArrLength);	// ´´½¨Ê÷½á¹¹
-int  isEmpty_tree(TreeNode* pRoot);									// ÅĞ¶Ïµ±Ç°Ê÷½á¹¹ÊÇ·ñ·Ç¿Õ
+// å‡½æ•°å£°æ˜
+void create_tree(TreeNode** pRoot, int * arrData ,int iArrLength);	// åˆ›å»ºæ ‘ç»“æ„
+int  isEmpty_tree(TreeNode* pRoot);									// åˆ¤æ–­å½“å‰æ ‘ç»“æ„æ˜¯å¦éç©º
 
-// º¯Êı¶¨Òå
+// å‡½æ•°å®šä¹‰
 void create_tree(TreeNode** pRoot, ElementType * arrData) {
 
 }

@@ -1,21 +1,13 @@
-#ifndef ALGORITHM
-#define ALGORITHM
+ï»¿#ifndef ALGORITHM_H
+#define ALGORITHM_H
 
-// º¯ÊıÉùÃ÷
-char* transIDCard15to18(char* strIDCardNO);
+#include <iostream>
 
+using std::cin;
+using std::cout;
+using std::endl;
 
-// º¯Êı¶¨Òå
-char* transIDCard15to18(char* strIDCardInput) {
-	/*
-	 * ½«15Î»Éí·İÖ¤ºÅ×ª»»Îª18Î»±ê×¼Éí·İÖ¤ºÅ
-	 *
-	 *
-	 *
-	 */ 
+char* TransIDCard15to18(char* strIDCardNO);							// å°†15ä½èº«ä»½è¯å·è½¬æ¢ä¸º18ä½
+void  FindPeakValue(int* arrArray, int iLength);					// å¯»æ‰¾å³°å€¼
 
-	char* strIDCardOutput;		// ×ª»»ºóµÄÉí·İÖ¤ºÅ
-
-}
-
-#endif // !ALGORITHM
+#endif // !ALGORITHM_H

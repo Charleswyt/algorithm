@@ -1,7 +1,7 @@
-#ifndef TIMER_H
+ï»¿#ifndef TIMER_H
 #define TIMER_H
 /************************************************************************/
-/*                             ¼ÆÊ±Ä£¿é                                 */
+/*                             è®¡æ—¶æ¨¡å—                                 */
 /************************************************************************/
 
 #include <stdio.h>
@@ -10,15 +10,15 @@
 #include <Mmsystem.h>
 #pragma comment(lib, "Winmm.lib")
 
-// º¯ÊıÉùÃ÷
-void timer_time(void);											// Ê¹ÓÃtime()¼ÆÊ±£¬Êä³öµ¥Î»Îªs
-void timer_clock(void);											// Ê¹ÓÃclock()¼ÆÊ±£¬Êä³öµ¥Î»Îªms
-void timer_timeGetTime(void);									// Ê¹ÓÃtimer_timeGetTime()¼ÆÊ±£¬Êä³öµ¥Î»Îªms
-void timer_GetTickCount(void);									// Ê¹ÓÃGetTickCount()¼ÆÊ±£¬Êä³öµ¥Î»Îªms
-void timer_QueryPerformanceCounter(void);						// Ê¹ÓÃtimer_QueryPerformanceCounter()¼ÆÊ±£¬Êä³öµ¥Î»Îªms
-void genRand(int * arrNumber, int iMin, int iMax, int iSize);	// Ëæ»úÊıÉú³ÉÆ÷£¬Éú³ÉÎ»ÓÚÇø¼ä[iMin, iMax]ÄÚµÄiSize¸öËæ»úÊı
-void genCatalan(int* arrNumber, int iSize);						// ¿¨ÌØÀ¼ÊıÉú³ÉÆ÷
-void genFibonacci(int* arrFibonacci, int iArrLength);			// ì³²¨ÄÇÆõÊıÁĞÉú³ÉÆ÷
+// å‡½æ•°å£°æ˜
+void timer_time(void);											// ä½¿ç”¨time()è®¡æ—¶ï¼Œè¾“å‡ºå•ä½ä¸ºs
+void timer_clock(void);											// ä½¿ç”¨clock()è®¡æ—¶ï¼Œè¾“å‡ºå•ä½ä¸ºms
+void timer_timeGetTime(void);									// ä½¿ç”¨timer_timeGetTime()è®¡æ—¶ï¼Œè¾“å‡ºå•ä½ä¸ºms
+void timer_GetTickCount(void);									// ä½¿ç”¨GetTickCount()è®¡æ—¶ï¼Œè¾“å‡ºå•ä½ä¸ºms
+void timer_QueryPerformanceCounter(void);						// ä½¿ç”¨timer_QueryPerformanceCounter()è®¡æ—¶ï¼Œè¾“å‡ºå•ä½ä¸ºms
+void genRand(int * arrNumber, int iMin, int iMax, int iSize);	// éšæœºæ•°ç”Ÿæˆå™¨ï¼Œç”Ÿæˆä½äºåŒºé—´[iMin, iMax]å†…çš„iSizeä¸ªéšæœºæ•°
+void genCatalan(int* arrNumber, int iSize);						// å¡ç‰¹å…°æ•°ç”Ÿæˆå™¨
+void genFibonacci(int* arrFibonacci, int iArrLength);			// æ–æ³¢é‚£å¥‘æ•°åˆ—ç”Ÿæˆå™¨
 
 void timer_time(void) {
 	time_t timeBegin, timeEnd;
@@ -27,7 +27,7 @@ void timer_time(void) {
 	Sleep(1000);
 	
 	timeEnd = time(NULL);
-	printf("ÓÃÊ±£º%lld s\n", timeEnd - timeBegin);
+	printf("ç”¨æ—¶ï¼š%lld s\n", timeEnd - timeBegin);
 }
 
 void timer_clock(void) {
@@ -37,7 +37,7 @@ void timer_clock(void) {
 	Sleep(800);
 	
 	clockEnd = clock();
-	printf("ÓÃÊ±£º%d ms\n", clockEnd - clockBegin);
+	printf("ç”¨æ—¶ï¼š%d ms\n", clockEnd - clockBegin);
 }
 
 void timer_timeGetTime(void) {
@@ -47,7 +47,7 @@ void timer_timeGetTime(void) {
 	Sleep(800);
 	
 	dwEnd = timeGetTime();
-	printf("ÓÃÊ±£º%d ms\n", dwEnd - dwBegin);
+	printf("ç”¨æ—¶ï¼š%d ms\n", dwEnd - dwBegin);
 }
 
 void timer_GetTickCount(void) {
@@ -57,14 +57,14 @@ void timer_GetTickCount(void) {
 	Sleep(800);
 	
 	dwGTCEnd = GetTickCount();
-	printf("ÓÃÊ±£º%d ms\n", dwGTCEnd - dwGTCBegin);
+	printf("ç”¨æ—¶ï¼š%d ms\n", dwGTCEnd - dwGTCBegin);
 }
 
 void timer_QueryPerformanceCounter(void) {
 	LARGE_INTEGER li, freq;
 	QueryPerformanceCounter(&li);
 	long long f_start = li.QuadPart;
-	QueryPerformanceFrequency(&freq);   //È¡µÃµ±Ç°Ïß(½ø)³ÌµÄÊ±ÖÓÖ÷Æµ
+	QueryPerformanceFrequency(&freq);   //å–å¾—å½“å‰çº¿(è¿›)ç¨‹çš„æ—¶é’Ÿä¸»é¢‘
 	
 	Sleep(800);
 	
