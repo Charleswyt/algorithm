@@ -56,14 +56,20 @@ void swap(ElementType* NumA, ElementType* NumB)
 void sort_bubble(ElementType* arrData, int iArrLength) {
 	// 冒泡排序
 	int i, j;		// 循环下标
+	short swapped;
 
 	for (i = 0; i < iArrLength - 1; i++){
-		for (j = i + 1; j < iArrLength; j++){
-			if (arrData[i] > arrData[j]){
-				swap(&arrData[i], &arrData[j]);
+		swapped = 0;
+		for (j = i + 1; j < iArrLength-i; j++){
+			if (arrData[j-1] > arrData[j]){
+				swapped = 1;
+				swap(&arrData[j-1], &arrData[j]);
 		
 			}
 		}
+	}
+	if(swapped == 0){
+         break;	
 	}
 }
 
